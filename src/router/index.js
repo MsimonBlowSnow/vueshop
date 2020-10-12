@@ -14,6 +14,14 @@ const router = new Vuerouter({
         path:"/home",
         name:"home",
         component: ()=>import("@/views/Home"),
+        redirect: "/welcome",
+        children:[{
+            path: "/welcome",
+            component: ()=>import("@/components/Welcome")
+        },{
+            path: "/users",
+            component: ()=>import('@/components/users/Users.vue'),
+        }]
     }]
 });
 

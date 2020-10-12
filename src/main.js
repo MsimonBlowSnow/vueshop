@@ -5,16 +5,17 @@ import store from "./store"
 import "./assets/css/global.css"
 import "./assets/fonts/iconfont.css"
 import "./plugins/elementui"
-import axios from 'axios'
-
+import axios from "./util/request"
 // import elementui from 'element-ui';
 // import 'element-ui/lib/theme-chalk/index.css';
-
-
-//配置请求的根路径
-axios.defaults.baseURL = "http://127.0.0.1:8888/api/private/v1/";
 Vue.prototype.$http = axios;
 
+
+
+if(localStorage.getItem("vueTestToken") && localStorage.getItem("vueTestUser")){
+  store.commit("loginModule/setUser",JSON.parse(localStorage.getItem("vueTestUser")));
+  store.commit("loginModule/setToken",localStorage.getItem("vueTestToken"));
+}
 // Vue.use(elementui);
 new Vue({
   render: h => h(App),
