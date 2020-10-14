@@ -21,6 +21,12 @@ const router = new Vuerouter({
         },{
             path: "/users",
             component: ()=>import('@/components/users/Users.vue'),
+        },{
+            path: "/rights",
+            component: ()=>import('@/components/power/Rights'),
+        },{
+            path : "/roles",
+            component: ()=>import('@/components/power/Roles'),
         }]
     }]
 });

@@ -10,23 +10,43 @@
     </el-header>
     <el-container>
       <!-- 侧边栏 -->
-      <el-aside :width="isCollapse? '64px':'200px'">
-        <div class="toggle-button" @click="toggleCollpse"> <i class="iconfont icon-close"></i></div>
+      <el-aside :width="isCollapse ? '64px' : '200px'">
+        <div class="toggle-button" @click="toggleCollpse">
+          <i class="iconfont icon-close"></i>
+        </div>
         <!-- 侧边栏菜单区域 -->
-        <el-menu :collapse-transition="false" :collapse="isCollapse" unique-opened background-color="#333744" text-color="#fff" :default-active="currentPath" active-text-color="#409EFF" router>
+        <el-menu
+          :collapse-transition="false"
+          :collapse="isCollapse"
+          unique-opened
+          background-color="#333744"
+          text-color="#fff"
+          :default-active="currentPath"
+          active-text-color="#409EFF"
+          router
+        >
           <!-- 一级菜单 -->
-          <el-submenu :index="item.id+''" v-for="item in menusList" :key="item.id">
+          <el-submenu
+            :index="item.id + ''"
+            v-for="item in menusList"
+            :key="item.id"
+          >
             <!-- 一级菜单的模板 -->
             <template slot="title">
               <i :class="pathiconAside[item.id]"></i>
-              <span>{{item.authName}}</span>
+              <span>{{ item.authName }}</span>
             </template>
-
+                
             <!-- 二级菜单 -->
-            <el-menu-item :index="'/'+subItem.path" v-for="subItem in item.children" :key="subItem.id" @click="saveCurrentPath(subItem.path)">
+            <el-menu-item
+              :index="'/' + subItem.path"
+              v-for="subItem in item.children"
+              :key="subItem.id"
+              @click="saveCurrentPath(subItem.path)"
+            >
               <template slot="title">
                 <i class="el-icon-menu"></i>
-                <span>{{subItem.authName}}</span>
+                <span>{{ subItem.authName }}</span>
               </template>
             </el-menu-item>
           </el-submenu>
@@ -48,15 +68,15 @@ export default {
       headimg: "",
       menusList: [],
       isCollapse: false,
-      currentPath: '',
+      currentPath: "",
       //下下之策
-    pathiconAside: {
+      pathiconAside: {
         101: "iconfont icon-shangpingouwudai2",
         102: "iconfont icon-danju-tianchong",
         103: "iconfont icon-tijikongjian",
         125: "iconfont icon-users",
         145: "iconfont icon-baobiao",
-    },
+      },
     };
   },
   methods: {
@@ -69,25 +89,24 @@ export default {
           message: res.meta.msg,
           duration: 1000,
         });
-        this.menusList = res.data;
+      this.menusList = res.data;
     },
 
     //点击按钮切换菜单的折叠与展开
-    toggleCollpse(){
+    toggleCollpse() {
       this.isCollapse = !this.isCollapse;
     },
 
     //修改二级菜单的激活属性
-    saveCurrentPath(path){
-      this.currentPath = '/' + path;
-      sessionStorage.setItem("vueTestPath",this.currentPath);
-    }
+    saveCurrentPath(path) {
+      this.currentPath = "/" + path;
+      sessionStorage.setItem("vueTestPath", this.currentPath);
+    },
   },
   created() {
     this.getMenuList();
     this.currentPath = sessionStorage.getItem("vueTestPath");
   },
-
 };
 </script>
 
@@ -110,7 +129,6 @@ export default {
       margin-left: 15px;
     }
   }
- 
 }
 .el-aside {
   background-color: #333744;
@@ -118,16 +136,16 @@ export default {
 .el-main {
   background-color: #eaeaf1;
 }
-.iconfont{
+.iconfont {
   padding-right: 10px;
 }
-.toggle-button{
-  background-color: #4A5064;
+.toggle-button {
+  background-color: #4a5064;
   font-size: 10px;
   line-height: 24px;
   text-align: center;
   color: #fff;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   cursor: pointer;
 }
 </style>
