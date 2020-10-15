@@ -5,3 +5,9 @@ html,body,#app{
     padding: 0;
     min-width: 1366px
 }
+.el-cascader{
+    width: 100%;
+}
+.el-cascader-menu {
+    height: 200px;
+  }

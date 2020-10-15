@@ -27,6 +27,9 @@ const router = new Vuerouter({
         },{
             path : "/roles",
             component: ()=>import('@/components/power/Roles'),
+        },{
+            path:"/categories",
+            component: ()=>import('@/components/good/Cate'),
         }]
     }]
 });
