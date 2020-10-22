@@ -30,6 +30,9 @@ const router = new Vuerouter({
         },{
             path:"/categories",
             component: ()=>import('@/components/good/Cate'),
+        },{
+            path: "/params",
+            component: ()=>import("@/components/good/Params"),
         }]
     }]
 });

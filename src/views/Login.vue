@@ -63,7 +63,7 @@ export default {
         }
         let user = {};
         let {data:res} = await this.$http.post("login", this.loginForm);
-        // console.log(res.data);
+        console.log(res);
         user.email = res.data.email;
         user.mobile = res.data.mobile;
         user.rid = res.data.rid;
@@ -136,4 +136,5 @@ export default {
     }
   }
 }
+
 </style>
