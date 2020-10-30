@@ -33,6 +33,12 @@ const router = new Vuerouter({
         },{
             path: "/params",
             component: ()=>import("@/components/good/Params"),
+        },{
+            path: "/goods",
+            component: ()=>import('@/components/good/List')
+        },{
+            path: "/goods/add",
+            component: ()=>import('@/components/good/Add')
         }]
     }]
 });
