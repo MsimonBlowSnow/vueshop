@@ -39,6 +39,9 @@ const router = new Vuerouter({
         },{
             path: "/goods/add",
             component: ()=>import('@/components/good/Add')
+        },{
+            path: "/orders",
+            component: ()=>import('@/components/order/Order')
         }]
     }]
 });
