@@ -4,7 +4,7 @@ import router from "./router"
 import store from "./store"
 import "./assets/css/global.css"
 import "./assets/fonts/iconfont.css"
-import "./plugins/elementui"
+// import "./plugins/elementui"
 import"./plugins/quillEditor"
 import TreeTable from 'vue-table-with-tree-grid'
 import axios from "./util/request"

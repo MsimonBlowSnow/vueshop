@@ -1,8 +1,8 @@
-import Vuerouter from 'vue-router';
 import Vue from "vue"
+import VueRouter from 'vue-router';
 import store from "../store"
-Vue.use(Vuerouter)
-const router = new Vuerouter({
+Vue.use(VueRouter)
+const router = new VueRouter({
     routes:[{
         path: "/",
         redirect: "/login",

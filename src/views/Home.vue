@@ -102,6 +102,8 @@ export default {
       this.currentPath = "/" + path;
       sessionStorage.setItem("vueTestPath", this.currentPath);
     },
+
+   
   },
   created() {
     this.getMenuList();

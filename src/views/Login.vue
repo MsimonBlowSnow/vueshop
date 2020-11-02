@@ -7,11 +7,11 @@
       <el-form ref="loginForm" :model="loginForm" class="login_form" :rules="loginFormRules">
         <!-- 用户名 -->
         <el-form-item prop="username">
-          <el-input v-model="loginForm.username" prefix-icon="iconfont icon-yonghu"></el-input>
+          <el-input v-model="loginForm.username" prefix-icon="iconfont icon-yonghu" placeholder="用户名admin"></el-input>
         </el-form-item>
         <!-- 密码 -->
         <el-form-item prop="password">
-          <el-input v-model="loginForm.password" type="password" show-password>
+          <el-input v-model="loginForm.password" type="password" show-password placeholder="密码123456">
             <i slot="prefix" class="iconfont icon-mima"></i>
           </el-input>
         </el-form-item>
@@ -30,8 +30,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: "admin",
-        password: "123456",
+        username: "",
+        password: "",
       },
       //表单的验证规则
       loginFormRules: {
@@ -63,6 +63,12 @@ export default {
         }
         let user = {};
         let {data:res} = await this.$http.post("login", this.loginForm);
+            if (res.meta.status !== 200) 
+        return this.$message({
+          type: "error",
+          message: "登录失败",
+          duration: 1000
+        });
         console.log(res);
         user.email = res.data.email;
         user.mobile = res.data.mobile;
@@ -75,11 +81,7 @@ export default {
         localStorage.setItem("vueTestToken",res.data.token);
         localStorage.setItem("vueTestUser", JSON.stringify(user));
 
-        if (res.meta.status !== 200) return this.$message({
-          type: "warning",
-          message: "登录失败",
-          duration: 1000
-        });
+    
         this.$message({
           type: "success",
           message: "登入成功",

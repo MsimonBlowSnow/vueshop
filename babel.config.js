@@ -8,7 +8,8 @@ module.exports = {
         "styleLibraryName": "theme-chalk"
       }
     ],
-    '@babel/plugin-transform-runtime'
+    '@babel/plugin-transform-runtime',
+    "transform-remove-console"
   ]
 }
 

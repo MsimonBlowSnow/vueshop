@@ -148,7 +148,7 @@
 </template>
 <script>
 import store from "@/store"
-import _ from "loadsh"
+import _ from "lodash"
 export default {
   data() {
     return {
