@@ -9,49 +9,49 @@ const router = new VueRouter({
     },{
         path:"/login",
         name:"login",
-        component: ()=>import("@/views/Login"),
+        component: ()=>import(/* webpackChunkName:"login_home_welcome" */ "@/views/Login"),
     },{
         path:"/home",
         name:"home",
-        component: ()=>import("@/views/Home"),
+        component: ()=>import(/* webpackChunkName:"login_home_welcome" */ "@/views/Home"),
         redirect: "/welcome",
         children:[{
             path: "/welcome",
-            component: ()=>import("@/components/Welcome")
+            component: ()=>import(/* webpackChunkName:"login_home_welcome" */ "@/components/Welcome")
         },{
             path: "/users",
-            component: ()=>import('@/components/users/Users.vue'),
+            component: ()=>import(/* webpackChunkName:"Users_Rights_Roles" */'@/components/users/Users.vue'),
         },{
             path: "/rights",
-            component: ()=>import('@/components/power/Rights'),
+            component: ()=>import( /* webpackChunkName:"Users_Rights_Roles" */ '@/components/power/Rights'),
         },{
             path : "/roles",
-            component: ()=>import('@/components/power/Roles'),
+            component: ()=>import( /* webpackChunkName:"Users_Rights_Roles" */ '@/components/power/Roles'),
         },{
             path:"/categories",
-            component: ()=>import('@/components/good/Cate'),
+            component: ()=>import(/* webpackChunkName: "Cate_Params" */ '@/components/good/Cate'),
         },{
             path: "/params",
-            component: ()=>import("@/components/good/Params"),
+            component: ()=>import(/* webpackChunkName: "Cate_Params" */ "@/components/good/Params"),
         },{
             path: "/goods",
-            component: ()=>import('@/components/good/List')
+            component: ()=>import( /* webpackChunkName: "GoodsList_Add" */ '@/components/good/List')
         },{
             path: "/goods/add",
-            component: ()=>import('@/components/good/Add')
+            component: ()=>import(/* webpackChunkName: "GoodsList_Add" */ '@/components/good/Add')
         },{
             path: "/orders",
-            component: ()=>import('@/components/order/Order')
+            component: ()=>import(/* webpackChunkName: "Order_Report" */'@/components/order/Order')
         },{
             path: "/reports",
-            component: ()=>import('@/components/report/Report')
+            component: ()=>import( /* webpackChunkName: "Order_Report" */'@/components/report/Report')
         }]
     }]
 });
 
 router.beforeEach ((to,from,next)=>{
     if(to.name !== "login" && !store.state.loginModule.token){
-        console.log(1);
+        console.log(this);
         next({name:"login"});
         return
     }
